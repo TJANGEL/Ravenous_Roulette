@@ -3,16 +3,15 @@
 var startAngle = 0;
 var arc;
 var spinTimeout = null;
-
 var spinArcStart = 10;
 var spinTime = 0;
 var spinTimeTotal = 0;
-
 var ctx;
 
 // initiates spin animation
 document.getElementById("spin").addEventListener("click", spin);
-// $('#details').val("");
+
+
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
   return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
@@ -91,10 +90,12 @@ function drawRouletteWheel() {
 
 // spin rotation time is randomized
 function spin() {
+  $("#details").empty();
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 3000;
   rotateWheel();
+
 }
 
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
@@ -118,11 +119,20 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = '15px lato';
-  var text = restaurantOptions[index]
+  var text = restaurantOptions[index];
+  var textURL = restaurantUrl[index];
   // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
-  // $('#details').append('<h3>' + "You are eating here:  " + textLoc + '</h3>')
+  $('#details').append('<h2>' + "Check us out on Yelp: " + textURL + '!' + '</h2>');
   ctx.restore();
+  //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
+  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
+  $("body").append(locationTag);
+
+  var googleTag = $(
+    '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
+  )
+  $("body").append(googleTag);
 }
 
 // slows down rotation of wheel smoothly

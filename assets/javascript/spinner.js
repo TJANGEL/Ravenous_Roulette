@@ -42,21 +42,21 @@ function drawRouletteWheel() {
   if (canvas.getContext) {
     var outsideRadius = 240;
     var textRadius = 135;
-    var insideRadius = 29;
+    var insideRadius = 30;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(500, 500, 500, 500);
+    ctx.clearRect(0, 0, 500, 500);
 
     // styles text in each arc
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    ctx.font = 'bold 14px Lato';
+    ctx.lineWidth = 1;
+    ctx.font = '12px Lato';
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
       ctx.fillStyle = getColor(i, restaurantOptions.length);
-
+      $('ctx').addClass('wheel');
       ctx.beginPath();
       ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
       ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
@@ -69,7 +69,7 @@ function drawRouletteWheel() {
         250 + Math.sin(angle + arc / 2) * textRadius);
       ctx.rotate(angle + arc / 2 + Math.PI / 150);
       var text = restaurantOptions[i];
-      ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+      ctx.fillText(text, -ctx.measureText(text).width / 1.5, 0);
       ctx.restore();
     }
 
@@ -120,10 +120,11 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px lato';
   var text = restaurantOptions[index];
+  var textLoc = restaurantCoord[index];
   var textURL = restaurantUrl[index];
-  // Appends picked restaurant into text div
-  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
-  $('#details').append('<h2>' + "Check us out on Yelp: " + textURL + '!' + '</h2>');
+  // Appends picked restaurant and yelp link into text div
+  $('#details').append('<h2>' + "The Wheel Has Chosen : " + text + '</h2>')
+  $('#details').append('<h4>' + "For more information : " + textURL + '!' + '</h4>');
   ctx.restore();
   //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
   var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')

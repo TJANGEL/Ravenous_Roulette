@@ -47,22 +47,25 @@ h4{
     cursor: pointer;
 }
 
-#foodWheel{
-    color:beige;  
-}
-
 #interactive{
     color:beige;
     font-family: 'Spicy Rice', cursive;    
 }
 
+.wheel {
+    /* float: center; */
+    position: fixed;
+    /* top: 50px; */
+    left: 20%;
+}
+
 #canvas{
-    background-color: transparent;
+    /* background-color: transparent; */
+    background: beige;
     font-family: 'Lato', sans-serif;    
     align-items: center;
     align-content: center;
-    opacity: 0.95;  
-    float: center;     
+    /* float: center;  */
 }
 
 
@@ -74,18 +77,10 @@ h4{
     border-radius: 5px;
 }
 
- 
-#wheel{
-    align-content: center;    
-    height: 1000px;
-    width: 200px; 
-    margin-left: 15%;       
-}
-
 #map {
-    width: 90%;
     margin-top: 5px;
-    height: 550px;
+    height: 920px;
     background-color: darkgray;
     border-radius: 5px;
+    width: 100%;
 }

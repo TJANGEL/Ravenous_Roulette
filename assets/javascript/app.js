@@ -85,9 +85,9 @@ function YelpCall() {
                 for(let i = 0; i<response.businesses.length; i++) {
                 restaurantOptions.push(response.businesses[i].name);
                 restaurantCoord.push(response.businesses[i].coordinates);
+                restaurantUrl.push(response.businesses[i].url);
                 console.log(restaurantCoord)
                 drawRouletteWheel()
-                
             }
         })
             .catch(error => {

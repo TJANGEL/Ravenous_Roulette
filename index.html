@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Food Roulette</title>
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase.js"></script>
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css"
         integrity="sha256-VEEaOnBKVRoYPn4AID/tY/XKVxKEqXstoo/xZ6nemak= sha384-D46t32f421/hB30qwnim2pIcisNN5GU9+6m2Mfnd3dKpTSFidZLa08/1StEiCFId sha512-WkgzH8VKemDfwrp18r+wgbx+oHXOkfd2kJs7ocAXdGDgonXDXh88E90IRtRZRXtO0IHprxYHYlY14h+wyTsUDA=="
@@ -52,18 +50,15 @@
     </div>
     <!-- choice -->
     <div class="grid-x grid-margin-x">
-        <!-- <div class="cell small-4"></div> -->
         <div class="cell small-12 text-center" id="foodWheel">
-            <!-- <h4>Spin the Wheel to Make your Choice!</h4> -->
             <h2 id="greeting"></h2>
             <input type="button" value="SPIN!" id='spin' />
             <!-- Roulette Wheel -->
-            <div class="wheel-container">
+            <div class="wheel">
                 <canvas id="canvas" width="500" height="500"></canvas>
             </div>
         </div>
     </div>
-    <!-- <div class="cell small-4"></div> -->
     <!-- details -->
     <div class="grid-x grid-margin-x">
         <div class="cell small-3"></div>

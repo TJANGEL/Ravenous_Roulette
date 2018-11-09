@@ -7,7 +7,6 @@ body {
 
 h1,
 h2 {
-    
     font-family: 'Spicy Rice', cursive;
 }
 
@@ -34,17 +33,19 @@ h4{
     margin-top: -5px;
     margin-bottom: 10px;
     padding: 10px 20px;
-    opacity: 0.8;
     font-weight: bold;
     font-size: 20px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poor Story', cursive;
     color: black;
     background-color: beige;
     border-radius: 5px;
 }
-
-#spin:hover {
+#spin:hover, a:hover{
     cursor: pointer;
+}
+
+#foodWheel{
+    color:beige;  
 }
 
 #interactive{
@@ -52,35 +53,41 @@ h4{
     font-family: 'Spicy Rice', cursive;    
 }
 
-.wheel {
-    /* float: center; */
-    position: fixed;
-    /* top: 50px; */
-    left: 20%;
-}
-
 #canvas{
-    /* background-color: transparent; */
-    background: beige;
+    background-color: transparent;
     font-family: 'Lato', sans-serif;    
     align-items: center;
     align-content: center;
-    /* float: center;  */
+    opacity: 0.95;  
+    float: center;     
 }
 
-
 #details{
-    background-color: beige;
+    background-color: transparent;
     font-family: 'Lato', sans-serif;
-    opacity: 0.8;
     font-family: 'Poor Story', cursive;
-    border-radius: 5px;
+    border-color: transparent;
+    color: beige;
+    text-shadow: black 2px solid;
+}
+
+a {
+    font-family: 'Spicy Rice', cursive; 
+    font-size: 24px;
+    color: lightblue;
+    text-decoration: none;
+}
+
+#wheel{
+    align-content: center;    
+    height: 1000px;
+    width: 200px; 
+    margin-left: 15%;       
 }
 
 #map {
-    margin-top: 5px;
-    height: 920px;
-    background-color: darkgray;
-    border-radius: 5px;
     width: 100%;
+    height: 920px;
+    background-color: transparent;
+    border-radius: 5px;
 }

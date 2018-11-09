@@ -1,5 +1,4 @@
 // roulette wheel
-
 var startAngle = 0;
 var arc;
 var spinTimeout = null;
@@ -10,7 +9,6 @@ var ctx;
 
 // initiates spin animation
 document.getElementById("spin").addEventListener("click", spin);
-
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -24,7 +22,7 @@ function RGB2Color(r, g, b) {
 // Creates color gradient through each arc
 function getColor(item, maxitem) {
   var phase = 0;
-  var center = 128;
+  var center = 127;
   var width = 127;
   var frequency = Math.PI * 2 / maxitem;
 
@@ -42,21 +40,21 @@ function drawRouletteWheel() {
   if (canvas.getContext) {
     var outsideRadius = 240;
     var textRadius = 135;
-    var insideRadius = 30;
+    var insideRadius = 29;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(500, 500, 500, 500);
 
     // styles text in each arc
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
-    ctx.font = '12px Lato';
+    ctx.lineWidth = 2;
+    ctx.font = '13px Lato';
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
       ctx.fillStyle = getColor(i, restaurantOptions.length);
-      $('ctx').addClass('wheel');
+
       ctx.beginPath();
       ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
       ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
@@ -69,7 +67,7 @@ function drawRouletteWheel() {
         250 + Math.sin(angle + arc / 2) * textRadius);
       ctx.rotate(angle + arc / 2 + Math.PI / 150);
       var text = restaurantOptions[i];
-      ctx.fillText(text, -ctx.measureText(text).width / 1.5, 0);
+      ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
     }
 
@@ -95,7 +93,6 @@ function spin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 3000;
   rotateWheel();
-
 }
 
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
@@ -121,13 +118,16 @@ function stopRotateWheel() {
   ctx.font = '15px lato';
   var text = restaurantOptions[index];
   var textLoc = restaurantCoord[index];
-  var textURL = restaurantUrl[index];
-  // Appends picked restaurant and yelp link into text div
-  $('#details').append('<h2>' + "The Wheel Has Chosen : " + text + '</h2>')
-  $('#details').append('<h4>' + "For more information : " + textURL + '!' + '</h4>');
+  var textUrl = restaurantUrl[index];
+
+  // Appends picked restaurant into text div
+  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>');
+
+  var yelpLink = $('<a target="_blank">Check us on Yelp!</a>').attr('href', textUrl);
+  $('#details').append(yelpLink);
   ctx.restore();
-  //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
-  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
+
+  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>');
   $("body").append(locationTag);
 
   var googleTag = $(

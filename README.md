@@ -4,7 +4,8 @@ Group Project #1
 background image found at http://www.freepptbackgrounds.net/wp-content/uploads/2013/02/Mc-Donalds-Powerpoint-Backgrounds.jpg
 
 Utilized html, css, java script, jquery, ajax, google api, yelp api
-    As a replacement for bootstrap and use of a new language, Foundation was used to stylize the app
+
+As a replacement for bootstrap and use of a new language, Foundation was used to stylize the app
 
 
 Page initializes with a modal requesting users location

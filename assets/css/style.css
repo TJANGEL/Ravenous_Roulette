@@ -1,93 +1,101 @@
 body {
-    background: url("http://www.freepptbackgrounds.net/wp-content/uploads/2013/02/Mc-Donalds-Powerpoint-Backgrounds.jpg") center center no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-  }
+  background: url("/assets/tabletop3.jpg") no-repeat;
+  /* background-size: cover; */
+  width: 100%;
+  height: 100%;
+}
 
 h1,
 h2 {
-    font-family: 'Spicy Rice', cursive;
+  font-family: "Spicy Rice", cursive;
 }
 
-h4{
-    font-family: 'Poor Story', cursive; 
+h4 {
+  font-family: "Poor Story", cursive;
+  color: darkslateblue;
+  font-weight: bold;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.form-icons {    
-    text-align: center;    
+.form-icons {
+  text-align: center;
 }
 
-#content{
-    text-align: center;
-    font-family: 'Lato', sans-serif;
+#content {
+  text-align: center;
+  font-family: "Lato", sans-serif;
 }
 
-#content-title{
-    color:beige;
-    margin-top: 20px;
+#content-title {
+  color: darkslateblue;
+  margin-top: 20px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 /* spin button */
 #spin {
-    margin-top: -5px;
-    margin-bottom: 10px;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: 'Poor Story', cursive;
-    color: black;
-    background-color: beige;
-    border-radius: 5px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Poor Story", cursive;
+  color: darkslateblue;
+  background-color: beige;
+  border: 3px solid darkslateblue;
+  border-radius: 5px;
 }
-#spin:hover, a:hover{
-    cursor: pointer;
-}
-
-#foodWheel{
-    color:beige;  
+#spin:hover,
+a:hover {
+  cursor: pointer;
 }
 
-#interactive{
-    color:beige;
-    font-family: 'Spicy Rice', cursive;    
+#foodWheel {
+  color: beige;
 }
 
-#canvas{
-    background-color: transparent;
-    font-family: 'Lato', sans-serif;    
-    align-items: center;
-    align-content: center;
-    opacity: 0.95;  
-    float: center;     
+#interactive {
+  color: darkslateblue;
+  font-family: "Spicy Rice", cursive;
 }
 
-#details{
-    background-color: transparent;
-    font-family: 'Lato', sans-serif;
-    font-family: 'Poor Story', cursive;
-    border-color: transparent;
-    color: beige;
-    text-shadow: black 2px solid;
+#canvas {
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
+  align-items: center;
+  align-content: center;
+  opacity: 0.95;
+  float: center;
+}
+
+#details {
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
+  font-family: "Poor Story", cursive;
+  border-color: transparent;
+  color: darkslateblue;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 a {
-    font-family: 'Spicy Rice', cursive; 
-    font-size: 24px;
-    color: lightblue;
-    text-decoration: none;
+  font-family: "Spicy Rice", cursive;
+  font-size: 30px;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-#wheel{
-    align-content: center;    
-    height: 1000px;
-    width: 200px; 
-    margin-left: 15%;       
+#wheel {
+  align-content: center;
+  height: 1000px;
+  width: 200px;
+  margin-left: 15%;
 }
 
 #map {
-    width: 100%;
-    height: 920px;
-    background-color: transparent;
-    border-radius: 5px;
+  width: 100%;
+  height: 920px;
+  background-color: transparent;
+  border-radius: 5px;
 }

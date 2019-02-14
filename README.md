@@ -17,3 +17,7 @@ The chosen restaurant name populates a div below the wheel and simultaneously ta
 A link to the restaurants yelp page populates the div with the chosen restaurant
 
 The user can re-spin the wheel to pick another restaurant, Causing a function to empty the restaurant and map div and fill it with the newly picked restaurant
+
+## Netlify Deployed Link
+
+Click [here](https://sleepy-wiles-c11262.netlify.com) to view Netlify deployed website

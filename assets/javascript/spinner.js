@@ -12,11 +12,14 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
-  return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
+  return (
+    String(nybHexString.substr((n >> 4) & 0x0f, 1)) +
+    nybHexString.substr(n & 0x0f, 1)
+  );
 }
 
 function RGB2Color(r, g, b) {
-  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
+  return "#" + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
 // Creates color gradient through each arc
@@ -24,7 +27,7 @@ function getColor(item, maxitem) {
   var phase = 0;
   var center = 127;
   var width = 127;
-  var frequency = Math.PI * 2 / maxitem;
+  var frequency = (Math.PI * 2) / maxitem;
 
   red = Math.sin(frequency * item + 2 + phase) * width + center;
   green = Math.sin(frequency * item + 0 + phase) * width + center;
@@ -48,7 +51,7 @@ function drawRouletteWheel() {
     // styles text in each arc
     ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.font = '13px Lato';
+    ctx.font = "13px Lato";
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
@@ -63,8 +66,10 @@ function drawRouletteWheel() {
 
       ctx.save();
       ctx.fillStyle = "black";
-      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius,
-        250 + Math.sin(angle + arc / 2) * textRadius);
+      ctx.translate(
+        250 + Math.cos(angle + arc / 2) * textRadius,
+        250 + Math.sin(angle + arc / 2) * textRadius
+      );
       ctx.rotate(angle + arc / 2 + Math.PI / 150);
       var text = restaurantOptions[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
@@ -102,37 +107,43 @@ function rotateWheel() {
     stopRotateWheel();
     return;
   }
-  var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-  startAngle += (spinAngle * Math.PI / 180);
+  var spinAngle =
+    spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+  startAngle += (spinAngle * Math.PI) / 180;
   drawRouletteWheel();
-  spinTimeout = setTimeout('rotateWheel()', 20);
+  spinTimeout = setTimeout("rotateWheel()", 20);
 }
 
 // Stops rotation of wheel
 function stopRotateWheel() {
   clearTimeout(spinTimeout);
-  var degrees = startAngle * 180 / Math.PI + 90;
-  var arcd = arc * 180 / Math.PI;
-  var index = Math.floor((360 - degrees % 360) / arcd);
+  var degrees = (startAngle * 180) / Math.PI + 90;
+  var arcd = (arc * 180) / Math.PI;
+  var index = Math.floor((360 - (degrees % 360)) / arcd);
   ctx.save();
-  ctx.font = '15px lato';
+  ctx.font = "15px lato";
   var text = restaurantOptions[index];
   var textLoc = restaurantCoord[index];
   var textUrl = restaurantUrl[index];
 
   // Appends picked restaurant into text div
-  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>');
+  $("#details").append("<h2>" + "The Wheel Has Chosen:  " + text + "</h2>");
 
-  var yelpLink = $('<a target="_blank">Check us on Yelp!</a>').attr('href', textUrl);
-  $('#details').append(yelpLink);
+  var yelpLink = $('<a target="_blank">Find out more on Yelp!</a>').attr(
+    "href",
+    textUrl
+  );
+  $("#details").append(yelpLink);
   ctx.restore();
 
-  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>');
+  var locationTag = $(
+    "<script> setCords(" + JSON.stringify(textLoc) + ") </script>"
+  );
   $("body").append(locationTag);
 
   var googleTag = $(
     '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
-  )
+  );
   $("body").append(googleTag);
 }
 
